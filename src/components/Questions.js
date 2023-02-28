@@ -1,58 +1,32 @@
-import React from "react";
-
-let teste = [
-    {
-        name: "teste"
-    },
-    {
-        name: "teste2"
-    },
-    {
-        name: "teste3"
-    },
-    {
-        name: "teste4"
-    }, {
-        name: "teste5"
-    },
-    {
-        name: "teste6"
-    }, {
-        name: "teste7"
-    },
-    {
-        name: "teste8"
-    }, {
-        name: "teste9"
-    },
-    {
-        name: "teste10"
-    }, {
-        name: "teste11"
-    },
-    {
-        name: "teste12"
-    },
-]
-
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Questions = ({ name }) => {
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        list()
+    }, [])
+
+    function list() {
+        return axios.get('https://curiouscat.live/api/v2.1/profile?username=zanfranceschi').then(res => {
+            let resultData = res.data.posts;
+            let resultPost = resultData.map(res => res.post)
+            setData(resultPost)
+        })
+    }
+
     return (
         <div className="question-content">
-            {teste.map(res => {
+            {data?.map(res => {
                 return (
                     <div className="questions-list">
-                        {res.name}
+                        {res.comment}
                     </div>
                 )
             })}
-
         </div>
-
-
-
-
     )
 }
 
