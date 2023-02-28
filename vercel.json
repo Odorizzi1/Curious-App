@@ -1,0 +1,10 @@
+{
+    "routes": [
+      {
+        "src": ".*",
+        "headers": {
+          "Access-Control-Allow-Origin": "https://curiouscat.live/api/v2.1/profile?username=zanfranceschi"
+        }
+      }
+    ]
+  }
