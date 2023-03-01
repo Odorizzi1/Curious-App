@@ -17,7 +17,25 @@ const Perfil = () => {
 
     return (
         <div>
-            <img style={{borderRadius:"50%"}} src={data.avatar}></img>
+            <img style={{ borderRadius: "50%" }} src={data.avatar}></img>
+
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+                <div>
+                    <span>{data.followers}</span><br />
+                    Seguidores
+
+                </div>
+                <div>
+                    <span>{data.answers}</span><br />
+                    Respostas
+                </div>
+                <div>
+                    <span>{data.following}</span><br />
+                    Seguindo
+                </div>
+
+            </div>
+
         </div>
     )
 }

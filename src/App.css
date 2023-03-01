@@ -46,9 +46,10 @@
 }
 
 .menu-lateral {
-  background-color: var(--secondary);
-  margin-right    : 10px;
-  width           : 25vw;
+background-color: var(--secondary);
+  margin-right: 10px;
+  width       : 25vw;
+  border-radius: 10px;
 }
 
 .board-container {
