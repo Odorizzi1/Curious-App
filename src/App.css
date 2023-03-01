@@ -27,6 +27,7 @@
   align-items     : center;
   border-radius   : 10px;
   border          : 1px solid var(--secondary);
+  margin-left     : 20px;
 
 }
 
@@ -46,10 +47,12 @@
 }
 
 .menu-lateral {
-background-color: var(--secondary);
-  margin-right: 10px;
-  width       : 25vw;
-  border-radius: 10px;
+  background-color: var(--primary);
+  margin-right    : 10px;
+  width           : 25vw;
+  border-right    : 1px solid var(--secondary);
+  height          : 75vh;
+  margin-top      : 11px;
 }
 
 .board-container {
@@ -65,3 +68,4 @@ background-color: var(--secondary);
   max-height      : 100%;
   overflow        : auto;
 }
+

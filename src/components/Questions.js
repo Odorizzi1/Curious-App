@@ -3,58 +3,96 @@ import axios from "axios";
 
 const Questions = ({ name }) => {
 
-    const [data, setData] = useState([]);
-    const [maxTimestamp, setMaxTimestamp] = useState(null);
+  const [data, setData] = useState([]);
+  const [maxTimestamp, setMaxTimestamp] = useState(null);
+  const [allData, setAllData] = useState([])
+  useEffect(() => {
+    list();
+    propertyUsers();
+  }, []);
 
-    useEffect(() => {
-        list();
-    }, []);
-
-    function list() {
-        let url = "https://curiouscat.live/api/v2.1/profile?username=zanfranceschi";
-        if (maxTimestamp !== null) {
-            url += `&max_timestamp=${maxTimestamp}`;
-        }
-        return axios
-            .get(url)
-            .then(res => {
-                console.log(res)
-                let resultData = res.data.posts;
-                let resultPost = resultData.map(res => res.post);
-                setMaxTimestamp(resultData[resultData.length - 1].post.timestamp);
-                setData(resultData => [...resultData, ...resultPost.slice(1)]); // Remove o primeiro item
-            })
-            .catch(error => {
-                console.log(error);
-            });
+  function list() {
+    let url = "https://curiouscat.live/api/v2.1/profile?username=zanfranceschi";
+    if (maxTimestamp !== null) {
+      url += `&max_timestamp=${maxTimestamp}`;
     }
+    return axios
+      .get(url)
+      .then(res => {
+        let resultData = res.data.posts;
+        let resultPost = resultData.map(res => res.post);
+        setMaxTimestamp(resultData[resultData.length - 1].post.timestamp);
+        setData(resultData => [...resultData, ...resultPost.slice(1)]); // Remove o primeiro item
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-    function handleLoadMore() {
-        list();
-    }
+  function propertyUsers() {
+    let url = "https://curiouscat.live/api/v2.1/profile?username=zanfranceschi";
+    return axios.get(url).then((res) => {
+      console.log(res)
+      setAllData(res.data)
+    })
+  }
 
-    return (
-        <div className="question-content">
-            {data?.map(res => {
-                return (
-                    <div className="questions-list" key={res.id}>
-                        <div>
-                            <h3 style={{ textAlign: "initial" }}>
-                                {res.comment}
-                                <div style={{ marginTop: "6px", fontSize: "13px", color: "orange", textAlign: "initial" }}> {res.senderData.id ? res.senderData.id : "anônimo"}</div>
-                            </h3>
+  function handleLoadMore() {
+    list();
+  }
 
+  return (
+    <div className="question-content">
+      {data?.map(res => {
+        return (
+          <div className="questions-list" key={res.id}>
+            <div>
+              <h3 style={{ textAlign: "initial" }}>
+                {res.comment}
+                <div style={{ marginTop: "6px", fontSize: "11px", color: "orange", textAlign: "initial", display: "flex" }}>
+                  <div style={{ color: "white" }}>Pergunta enviada por</div>&nbsp;
+                  <span style={{ fontSize: "18px" }} class="material-symbols-outlined">
+                    contrast_rtl_off
+                  </span>
+                  <div style={{ fontSize: "14px" }}>
+                    {res.senderData.id ? res.senderData.id : "anônimo"}
+                  </div>
+                </div>
+              </h3>
 
-                            <h4>
-                                {res.reply}
-                            </h4>
-                        </div>
-                    </div>
-                );
-            })}
-            <button onClick={handleLoadMore}>Load more</button>
-        </div>
-    );
+              <div style={{ alignItems: "center", display: "flex", gap: "20px" }}>
+                <div style={{ display: "flex", padding: "20px", alignItems: "flex-start" }}>
+                  <img style={{ borderRadius: "50px", width: "70px" }} src={allData.avatar} />
+                  <div>
+                    <div style={{ fontSize: "15px" }}> {allData.username}</div>
+                    {/* <div> {}</div>  Lógica de trazer a data*/}
+                  </div>
+                </div>
+                <h4 style={{ fontSize: "15px" }}>
+                  {res.reply}
+                </h4>
+
+              </div>
+              <div style={{ display: "flex" }}>
+                <span class="material-symbols-outlined">
+                  favorite
+                </span>
+                <span class="material-symbols-outlined">
+                  repeat
+                </span>
+                <span class="material-symbols-outlined">
+                  more_horiz
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+        );
+      })}
+      <button onClick={handleLoadMore}>Load more</button>
+    </div>
+  );
 };
 
 export default Questions;
