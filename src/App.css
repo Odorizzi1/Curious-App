@@ -49,7 +49,7 @@
 .menu-lateral {
   background-color: var(--primary);
   margin-right    : 10px;
-  width           : 25vw;
+  width           : 16vw;
   border-right    : 1px solid var(--secondary);
   height          : 75vh;
   margin-top      : 11px;

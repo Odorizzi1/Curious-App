@@ -19,7 +19,7 @@ const Perfil = () => {
     <div>
       <img style={{ borderRadius: "50%" }} src={data.avatar}></img>
 
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", height: "100px", marginTop: "20px", fontSize: "17px", gap: "11px" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "100px", marginTop: "20px", fontSize: "17px", gap: "11px" }}>
         <div>
           <span>{data.followers}</span> &nbsp;
           Seguidores
