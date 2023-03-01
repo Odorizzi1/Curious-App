@@ -18,6 +18,7 @@ const Questions = ({ name }) => {
         return axios
             .get(url)
             .then(res => {
+                console.log(res)
                 let resultData = res.data.posts;
                 let resultPost = resultData.map(res => res.post);
                 setMaxTimestamp(resultData[resultData.length - 1].post.timestamp);
@@ -28,7 +29,6 @@ const Questions = ({ name }) => {
             });
     }
 
-
     function handleLoadMore() {
         list();
     }
@@ -38,7 +38,17 @@ const Questions = ({ name }) => {
             {data?.map(res => {
                 return (
                     <div className="questions-list" key={res.id}>
-                        {res.comment}
+                        <div>
+                            <h3 style={{ textAlign: "initial" }}>
+                                {res.comment}
+                                <div style={{ marginTop: "6px", fontSize: "13px", color: "orange", textAlign: "initial" }}> {res.senderData.id ? res.senderData.id : "anônimo"}</div>
+                            </h3>
+
+
+                            <h4>
+                                {res.reply}
+                            </h4>
+                        </div>
                     </div>
                 );
             })}
