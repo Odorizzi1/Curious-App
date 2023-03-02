@@ -77,8 +77,12 @@ const Questions = ({ name }) => {
 
               </div>
               <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <span class="material-symbols-outlined">
+                <span style={{ display: "flex", alignItems: "center" }} class="material-symbols-outlined">
                   favorite
+                  <div style={{ fontSize: "11px" }}>
+                    {res.likes}
+
+                  </div>
                 </span>
                 <span class="material-symbols-outlined">
                   repeat
