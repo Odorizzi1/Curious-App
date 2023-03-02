@@ -36,6 +36,17 @@ const Questions = ({ name }) => {
       setAllData(res.data)
     })
   }
+  function getDateFromReq(data) {
+    const timestamp = data;
+    const date = new Date(timestamp * 1000);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
+
+  }
 
   function handleLoadMore() {
     list();
@@ -65,7 +76,7 @@ const Questions = ({ name }) => {
                   <img style={{ borderRadius: "50px", width: "70px" }} src={allData.avatar} />
                   <div>
                     <div style={{ fontSize: "15px" }}> {allData.username}</div>
-                    {/* <div> {}</div>  Lógica de trazer a data*/}
+                    <div style={{ fontSize: "10px" }}>{getDateFromReq(res.timestamp)}</div>
                   </div>
                 </div>
                 <div style={{ textAlign: "left", backgroundColor: "#2a2a2a", width: "37vw", height: "23vh", border: "1px solid #2a2a2a", borderRadius: "10px" }}>
