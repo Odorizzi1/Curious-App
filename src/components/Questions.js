@@ -47,7 +47,7 @@ const Questions = ({ name }) => {
         return (
           <div className="questions-list" key={res.id}>
             <div>
-              <h3 style={{ textAlign: "initial" }}>
+              <h3 style={{ textAlign: "initial", padding: "20px" }}>
                 {res.comment}
                 <div style={{ marginTop: "6px", fontSize: "11px", color: "orange", textAlign: "initial", display: "flex" }}>
                   <div style={{ color: "white" }}>Pergunta enviada por</div>&nbsp;
@@ -68,12 +68,15 @@ const Questions = ({ name }) => {
                     {/* <div> {}</div>  Lógica de trazer a data*/}
                   </div>
                 </div>
-                <h4 style={{ fontSize: "15px" }}>
-                  {res.reply}
-                </h4>
+                <div style={{ textAlign: "left", backgroundColor: "#2a2a2a", width: "37vw", height: "23vh", border: "1px solid #2a2a2a", borderRadius: "10px" }}>
+                  <div style={{ fontSize: "16px", padding: "5px" }}>
+                    {res.reply}
+                  </div>
+
+                </div>
 
               </div>
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <span class="material-symbols-outlined">
                   favorite
                 </span>
