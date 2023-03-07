@@ -61,10 +61,13 @@ const Questions = ({ name }) => {
               <h3 style={{ textAlign: "initial", padding: "20px", backgroundColor: "#181616", border: "1px solid #181616", borderRadius: "10px" }}>
                 {res.comment}
                 <div style={{ marginTop: "6px", fontSize: "11px", color: "orange", textAlign: "initial", display: "flex" }}>
-                  <div style={{ color: "white" }}>Pergunta enviada por</div>&nbsp;
-                  <span style={{ fontSize: "18px" }} class="material-symbols-outlined">
-                    contrast_rtl_off
-                  </span>
+                  {/* <div style={{ color: "white" }}>Pergunta enviada por</div>&nbsp; */}
+                  {!res.senderData.id ?
+                    <span style={{ fontSize: "18px" }} class="material-symbols-outlined">
+                      contrast_rtl_off
+                    </span>
+                    : undefined
+                  }
                   <div style={{ fontSize: "14px" }}>
                     {res.senderData.id ? res.senderData.id : "anônimo"}
                   </div>
