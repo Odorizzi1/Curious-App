@@ -58,7 +58,7 @@ const Questions = ({ name }) => {
         return (
           <div className="questions-list" key={res.id}>
             <div>
-              <h3 style={{ textAlign: "initial", padding: "20px" }}>
+              <h3 style={{ textAlign: "initial", padding: "20px", backgroundColor: "#181616", border: "1px solid #181616", borderRadius: "10px" }}>
                 {res.comment}
                 <div style={{ marginTop: "6px", fontSize: "11px", color: "orange", textAlign: "initial", display: "flex" }}>
                   <div style={{ color: "white" }}>Pergunta enviada por</div>&nbsp;
@@ -79,7 +79,7 @@ const Questions = ({ name }) => {
                     <div style={{ fontSize: "10px" }}>{getDateFromReq(res.timestamp)}</div>
                   </div>
                 </div>
-                <div style={{ textAlign: "left", backgroundColor: "#2a2a2a", width: "37vw", height: "23vh", border: "1px solid #2a2a2a", borderRadius: "10px" }}>
+                <div style={{ textAlign: "left", backgroundColor: "#181616", width: "37vw", height: "23vh", border: "1px solid #2a2a2a", borderRadius: "10px" }}>
                   <div style={{ fontSize: "16px", padding: "5px" }}>
                     {res.reply}
                   </div>
@@ -88,17 +88,17 @@ const Questions = ({ name }) => {
 
               </div>
               <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <span style={{ display: "flex", alignItems: "center" }} class="material-symbols-outlined">
+                <span style={{ display: "flex", alignItems: "center", cursor: "pointer" }} class="material-symbols-outlined">
                   favorite
                   <div style={{ fontSize: "11px" }}>
                     {res.likes}
 
                   </div>
                 </span>
-                <span class="material-symbols-outlined">
+                <span style={{ cursor: "pointer" }} class="material-symbols-outlined">
                   repeat
                 </span>
-                <span class="material-symbols-outlined">
+                <span style={{ cursor: "pointer" }} class="material-symbols-outlined">
                   more_horiz
                 </span>
 
